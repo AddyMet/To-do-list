@@ -1,8 +1,8 @@
 :root {
    --gradient: linear-gradient(
-     180deg,
+     70000deg,
      rgba(45, 112, 1253, 0.73) 0%,
-     #f0bfdb 100%
+     #cf358c 100%
    );
    --dark: #001747;
    --grey: #b1bacb;
@@ -12,6 +12,8 @@
    --blue: #2d70fd;
    --green: #00d8a7;
    --white: #ffffff;
+   --sagegreen: #9DC183;
+   --fusia: #EF2B7C;
  }
  
  body {
@@ -181,11 +183,11 @@
  }
  
  .made-by {
-   color: var(--grey-dark);
+   color: var(--fusia);
  }
  
  .author {
-   color: var(--blue);
+   color: var(--fusia);
    font-weight: bold;
  }
  
