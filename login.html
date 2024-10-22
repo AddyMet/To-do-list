@@ -1,0 +1,41 @@
+<!--Templates
+
+Log in
+
+Sign up
+You said:
+how to add a login page in front of my page that redirects to my page using javascript, HTML and CSS?
+ChatGPT said:
+ChatGPT
+To create a simple login page that redirects to another page upon successful login using HTML, CSS, and JavaScript, you can follow these steps:
+
+1. Create the HTML Structure
+You'll need two HTML files: one for the login page and one for the main page.
+
+login.html
+html
+Copy code -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Login/Register</h1>
+        <form id="authForm" action="home.html">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login/Register</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

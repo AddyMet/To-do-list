@@ -1,3 +1,20 @@
+document.getElementById('authForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  // Simple validation (you can expand this with real checks)
+  if (username && password) {
+      // Simulate a successful login/registration
+      // You can replace this with an actual authentication process
+      localStorage.setItem('user', username);
+      window.location.href = 'homepage.html'; // Redirect to your main page
+  } else {
+      document.getElementById('message').textContent = 'Please fill in all fields.';
+  }
+});
+
 // Retrieve todo from local storage or initialize an empty array
 let todo = JSON.parse(localStorage.getItem("todo")) || [];
 const todoInput = document.getElementById("todoInput");
