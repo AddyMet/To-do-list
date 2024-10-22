@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <script src="./index.js" defer></script>
-    <title>Addy's To-do-list</title>
+    
+    <title>Todo</title>
 </head>
 <body>
-
     <section class="todo"> 
         <h2>To-do list</h2>
         <div class="input">
@@ -22,18 +21,21 @@
         <ul class="scroll">
             <li id="todoList"></li>
         </ul>
-        <hr class="counter" />
-        <div class="counter-container">
-             <p><span>0</span> items total</p>
-             <button id="deleteButton">Delete All</button>
+        <div>
+            <hr class="counter" />
+            <div class="counter-container">
+                <p><span id="todoCount">0</span> items total</p>
+                <button id="deleteButton">Delete All</button>
+            </div>
+        </div>
     </section>
      <footer>
         <div class="footer">
             <p class="made-by">Made by:</p>
-            <p class="author">Addy</p>
+            <p class="author">Addy and Felix </p>
         </div>
      </footer>  
-       
+    <script src="./index.js"></script>   
 </body>
 </html>
 

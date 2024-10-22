@@ -1,74 +1,59 @@
-document.getElementById('authForm').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission
 
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  // Simple validation (you can expand this with real checks)
-  if (username && password) {
-      // Simulate a successful login/registration
-      // You can replace this with an actual authentication process
-      localStorage.setItem('user', username);
-      window.location.href = 'homepage.html'; // Redirect to your main page
-  } else {
-      document.getElementById('message').textContent = 'Please fill in all fields.';
-  }
-});
-
-// Retrieve todo from local storage or initialize an empty array
 let todo = JSON.parse(localStorage.getItem("todo")) || [];
 const todoInput = document.getElementById("todoInput");
 const todoList = document.getElementById("todoList");
 const todoCount = document.getElementById("todoCount");
 const addButton = document.querySelector(".btn");
-const deleteButton = document.getElementById("deleteButton");
+const deleteButton = document.getElementById("deleteButton")
 
-// Initialize
 document.addEventListener("DOMContentLoaded", function () {
   addButton.addEventListener("click", addTask);
   todoInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevents default Enter key behavior
+      event.preventDefault();
       addTask();
     }
-  });
+  })
   deleteButton.addEventListener("click", deleteAllTasks);
   displayTasks();
-});
+})
 
-function addTask() {
+const addTask = () => {
   const newTask = todoInput.value.trim();
   if (newTask !== "") {
-    todo.push({ text: newTask, disabled: false });
+    todo.push({
+      text: newTask,
+      disabled: false,
+    });
     saveToLocalStorage();
     todoInput.value = "";
     displayTasks();
   }
 }
 
-function displayTasks() {
+
+
+const displayTasks = () => {
   todoList.innerHTML = "";
   todo.forEach((item, index) => {
     const p = document.createElement("p");
     p.innerHTML = `
       <div class="todo-container">
-        <input type="checkbox" class="todo-checkbox" id="input-${index}" ${
-      item.disabled ? "checked" : ""
-    }>
-        <p id="todo-${index}" class="${
-      item.disabled ? "disabled" : ""
-    }" onclick="editTask(${index})">${item.text}</p>
+        <input type="checkbox" class="todo-checkbox" id="input-${index}" ${item.disabled ? "checked" : ""}>
+        <p id="todo-${index}" class="${item.disabled ? "disabled" : ""}" onclick="editTask(${index})">
+        ${item.text}      
+        </p>
       </div>
     `;
-    p.querySelector(".todo-checkbox").addEventListener("change", () =>
-      toggleTask(index)
-    );
+    p.querySelector(".todo-checkbox").addEventListener("change", () => {
+      toggleTask(index);
+    });
     todoList.appendChild(p);
   });
   todoCount.textContent = todo.length;
 }
 
-function editTask(index) {
+const editTask = (index) => {
   const todoItem = document.getElementById(`todo-${index}`);
   const existingText = todo[index].text;
   const inputElement = document.createElement("input");
@@ -76,7 +61,7 @@ function editTask(index) {
   inputElement.value = existingText;
   todoItem.replaceWith(inputElement);
   inputElement.focus();
-
+  
   inputElement.addEventListener("blur", function () {
     const updatedText = inputElement.value.trim();
     if (updatedText) {
@@ -87,18 +72,18 @@ function editTask(index) {
   });
 }
 
-function toggleTask(index) {
-  todo[index].disabled = !todo[index].disabled;
-  saveToLocalStorage();
-  displayTasks();
-}
-
 function deleteAllTasks() {
   todo = [];
   saveToLocalStorage();
   displayTasks();
 }
 
-function saveToLocalStorage() {
+function toggleTask(index) {
+  todo[index].disabled = !todo[index].disabled;
+  saveToLocalStorage();
+  displayTasks();
+}
+
+const saveToLocalStorage = () => {
   localStorage.setItem("todo", JSON.stringify(todo));
 }
